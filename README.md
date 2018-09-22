@@ -13,6 +13,6 @@ const pushover = require('@porla-contrib/pushover')('AppToken', 'UserToken');
 const app = new Porla();
 
 app.subscribe('torrent.added', [
-    pushover('Torrent {{ name }} added')
+    pushover('Torrent {{ torrent.name }} added')
 ]);
 ```
