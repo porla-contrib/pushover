@@ -1,14 +1,12 @@
-const Mustache = require('mustache');
 const request = require('request');
-
-const url = 'https://api.pushover.net/1/messages.json';
+const url     = 'https://api.pushover.net/1/messages.json';
 
 module.exports = (token, user) => {
     return function pushover(message, options) {
         const parsedOptions = options || {};
 
-        return function push(item) {
-            const renderedMessage = Mustache.render(message, item);
+        return function push(porla, item) {
+            const renderedMessage = porla.utils.renderMessage(message, item);
 
             return new Promise((resolve, reject) => {
                 const requestOptions = {

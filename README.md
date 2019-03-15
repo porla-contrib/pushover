@@ -1,18 +1,27 @@
 # Pushover notifications for Porla
 
-The Pushover plugin for Porla enables easy notifications for any event. It
-supports Mustache templating for your messages.
-
+The Pushover plugin for Porla enables easy notifications for any event.
 
 ## Usage
 
 ```js
-const { Porla } = require('@porla/porla');
+const porla    = require('@porla/porla');
 const pushover = require('@porla-contrib/pushover')('AppToken', 'UserToken');
 
-const app = new Porla();
+const app = porla();
 
-app.subscribe('torrent.added', [
+app.on('torrent.added', [
     pushover('Torrent {{ torrent.name }} added')
 ]);
+```
+
+#### Options
+
+The following options are supported as the last parameter of the `pushover`
+function.
+
+```js
+{
+    title: 'Robobot'
+}
 ```
